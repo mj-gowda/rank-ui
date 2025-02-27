@@ -15,6 +15,7 @@ const ExamResult = () => {
     const value3 = searchParams.get('state');
     const value4 = searchParams.get('gender');
     const value5 = searchParams.get('rollNum');
+    const value6 = searchParams.get('language');
     const [loading, setLoading] = useState(true);
 
 
@@ -43,10 +44,10 @@ const ExamResult = () => {
                     value2 = response1.data.result.category;
                     
                 } else {
-                    const url = `${apiUrl}/api/v1/candidate/scrape?url=${value1}&category=${value2}&state=${value3}&gender=${value4}`;
+                    const url = `${apiUrl}/api/v1/candidate/scrape?url=${value1}&category=${value2}&state=${value3}&gender=${value4}&language=${value6}`;
                     // console.log(url);
                     const response1 = await axios.post(url);
-
+                    console.log(value6);
                     setResult1(response1.data);
                     setRollNum(response1.data.result.rollNumber);
                 }
@@ -57,7 +58,7 @@ const ExamResult = () => {
         };
 
         fetchData();
-    }, [value1, value2, value3, value4]);
+    }, [value1, value2, value3, value4,value6]);
 
     useEffect(() => {
 

@@ -13,15 +13,16 @@ export default function Home() {
     const [gender, setGender] = useState('');
     const [requiredFields, setRequiredFields] = useState(true);
     const [urlError, setUrlErrorField] = useState(false);
+    const [language,setLanguage] = useState('');
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        if (category === '' || category === null || state === '' || url === '' || gender === '') {
+        if (category === '' || category === null || state === '' || url === '' || gender === '' || language === '') {
             setRequiredFields(false)
         } if (!url.startsWith("https://ssc.digialm.com")) {
             setUrlErrorField(true)
         } else {
-            navigate(`/examResult?url=${url}&state=${state}&category=${category}&gender=${gender}`);
+            navigate(`/examResult?url=${url}&state=${state}&category=${category}&gender=${gender}&language=${language}`);
         }
     };
 
@@ -78,6 +79,23 @@ export default function Home() {
                         <option value="">Gender</option>
                         <option value="Male">Male</option>
                         <option value="Female">Female</option>
+                    </select>
+                </div>
+                 <div className='input1'>
+                    <label htmlFor="language">Language:<span className="mandatory">*</span></label>
+                    <select
+                        id="language"
+                        name="language"
+                        value={language}
+                        onChange={(event) =>
+                            setLanguage(event.target.value)
+                        }
+                        required  // Add the required attribute here
+                    >
+                        <option value="">Language</option>
+                        <option value="Kannada">Kannada</option>
+                        <option value="English">English</option>
+                        <option value="Other">Other</option>
                     </select>
                 </div>
                 <div className='input1'>
