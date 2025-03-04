@@ -27,7 +27,7 @@ const ExamResult = () => {
     const [result5, setResult5] = useState('');
     const [result6, setResult6] = useState('');
 
-    const apiUrl = 'http://localhost:8080';
+    const apiUrl = process.env.REACT_APP_API_URL;
 
 
     useEffect((event) => {
